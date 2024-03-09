@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        font-family: Arial;
+        transition: background-color .3s, color .3s;
+    }
+
+    .dark-theme{
+        background-color: black;
+        color:white;
+    }
+
+    h1{
+        color: rgb(51, 151, 151);
+    }
+
+
+</style>
+<body>
+    <h1>Переключение темы</h1>
+
+    <label for="tema">Тема</label>
+    <input type="checkbox" id="tema">
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        const themeToggle = document.getElementById("tema"); //Обращаемся к документа и начинаем отслеживать действия. Далее создаем константу внутри функции значение которой это обращение к id "tema"
+        
+        if(localStorage.getItem(("theme") === "dark")){
+            document.body.classList.add("dark-theme");
+            themeToggle.checked = true; // создаем условие в котором если в локальном хранилище есть theme со значением dark, то мы добавляем к документу класс dark-theme
+        }
+
+        themeToggle.addEventListener("change", function(){
+            if(themeToggle.checked){
+                document.body.classList.add("dark-theme");
+                localStorage.setItem("theme", "dark");
+            } // далее отслеживаем действия константы , добавляя функцию, которая делает условие:
+            // если themeToggle изменяется, то добавляем к документу класс dark-theme и сохраняем эти данные в локальное хранилище
+            else{
+                document.body.classList.remove("dark-theme");
+                localStorage.setItem("thme", "light");
+            }//иначе возвращаем dark-theme и сохраняем уже эти данные в локальном хранилище
+        })
+
+
+
+
+        })
+</script>
+</html>
